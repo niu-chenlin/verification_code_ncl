@@ -120,6 +120,8 @@ export class VerificationCode extends React.Component<VerificationCodeProps, any
             this.setState({value: this._inputStr});
             if(inputStr.length === areStr.length) this.retMsg(areStr, this._inputStr);
         } else {
+            e.preventDefault();
+            e.stopPropagation();
             this.retMsg(areStr, this._inputStr);
         }
     }
