@@ -1,0 +1,47 @@
+{
+  "name": "verification_code_ncl",
+  "version": "1.0.8",
+  "description": "一个图形验证码",
+  "main": "dist/verificationCode.js",
+  "types": "dist/verificationCode.d.ts",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "verificationCode",
+    "verification",
+    "verification-code",
+    "verification_code"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/niu-chenlin/verification_code_ncl.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run-bulid": "webpack --progress --watch",
+    "run-server": "webpack-dev-server"
+  },
+  "author": "牛晨林",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^16.14.0",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/plugin-transform-runtime": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-react": "^7.13.13",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^2.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.23.1",
+    "typescript": "^4.2.4",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
