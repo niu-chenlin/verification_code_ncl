@@ -41,7 +41,7 @@ var VerificationCode = /** @class */ (function (_super) {
     __extends(VerificationCode, _super);
     function VerificationCode(props) {
         var _this = _super.call(this, props) || this;
-        _this._btnShow = _this.props.btnShow ? _this.props.btnShow : true;
+        _this._btnShow = (typeof _this.props.btnShow !== "undefined" && _this.props.btnShow !== null) ? _this.props.btnShow : true;
         _this._width = _this.props.width ? _this.props.width : 200;
         _this._height = _this.props.height ? _this.props.height : 50;
         _this._round = _this.props.round ? _this.props.round : 15;
@@ -140,6 +140,8 @@ var VerificationCode = /** @class */ (function (_super) {
                 this.retMsg(areStr, this._inputStr);
         }
         else {
+            e.preventDefault();
+            e.stopPropagation();
             this.retMsg(areStr, this._inputStr);
         }
     };
