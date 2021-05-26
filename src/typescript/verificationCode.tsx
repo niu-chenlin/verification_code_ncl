@@ -1,5 +1,5 @@
 import * as React from "react";
-require("../static/index.css");
+require("./static/index.css");
 
 interface VerificationCodeProps {
     btnShow?: boolean;
@@ -8,7 +8,7 @@ interface VerificationCodeProps {
     round?: number;
     fontSize?: number;
     strData?: string[];
-    onGetCanvasColor?: () => string;
+    onResCanvasColor?: () => any;
     onResult?: (ret: object) => void;
 }
 export class VerificationCode extends React.Component<VerificationCodeProps, any> {
@@ -39,7 +39,7 @@ export class VerificationCode extends React.Component<VerificationCodeProps, any
         canvas.width = this._width;
         // this._ctx.clearRect(0, 0, this._width, this._height);
         // 背景设计
-        this._ctx.fillStyle = this.props.onGetCanvasColor ? this.props.onGetCanvasColor() : this.randomRgbaColor();
+        this._ctx.fillStyle = this.props.onResCanvasColor ? this.props.onResCanvasColor() : this.randomRgbaColor();
         this._ctx.fillRect(0,0,this._width,this._height);
 
         // 干扰线设计

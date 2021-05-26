@@ -1,5 +1,5 @@
 import * as React from "react";
-import css from "../static/index.css";
+import css from "../typescript/static/index.css";
 
 /**
  * 验证组件-props定义
