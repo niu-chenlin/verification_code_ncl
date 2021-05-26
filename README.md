@@ -15,7 +15,7 @@ timeline: true
 - fontSize?: number, Canvas字符字体大小
 - strData?: string, Canvas内显示的验证码-此组件已经默认生成,但是不建议使用,前端生成方式过于危险
 - onResult?: (res: any) => void Canvas验证回调方法-res{code: number, msg: string} 返回一个对象,code-200即为成功,其他均为失败,失败后会有相应的msg值,按照msg值提示即可
-
+- onGetCanvasColor?: () => string 函数需要返回一个颜色标识，用于定制canvas的背景色
 ---
 
 ## 1.0.0
