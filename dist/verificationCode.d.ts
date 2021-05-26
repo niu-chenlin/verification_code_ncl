@@ -6,7 +6,7 @@ interface VerificationCodeProps {
     round?: number;
     fontSize?: number;
     strData?: string[];
-    onGetCanvasColor?: () => string;
+    onResCanvasColor?: () => any;
     onResult?: (ret: object) => void;
 }
 export declare class VerificationCode extends React.Component<VerificationCodeProps, any> {

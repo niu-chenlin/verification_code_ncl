@@ -36,7 +36,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VerificationCode = void 0;
 var React = __importStar(require("react"));
-require("../static/index.css");
+require("./static/index.css");
 var VerificationCode = /** @class */ (function (_super) {
     __extends(VerificationCode, _super);
     function VerificationCode(props) {
@@ -65,7 +65,7 @@ var VerificationCode = /** @class */ (function (_super) {
         canvas.width = this._width;
         // this._ctx.clearRect(0, 0, this._width, this._height);
         // 背景设计
-        this._ctx.fillStyle = this.props.onGetCanvasColor ? this.props.onGetCanvasColor() : this.randomRgbaColor();
+        this._ctx.fillStyle = this.props.onResCanvasColor ? this.props.onResCanvasColor() : this.randomRgbaColor();
         this._ctx.fillRect(0, 0, this._width, this._height);
         // 干扰线设计
         this.randomLine(this._ctx);
