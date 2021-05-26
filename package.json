@@ -1,6 +1,6 @@
 {
   "name": "verification_code_ncl",
-  "version": "1.0.9",
+  "version": "1.0.8",
   "description": "一个图形验证码",
   "main": "dist/verificationCode.js",
   "types": "dist/verificationCode.d.ts",
@@ -13,6 +13,10 @@
     "verification-code",
     "verification_code"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/niu-chenlin/verification_code_ncl.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "run-bulid": "webpack --progress --watch",
