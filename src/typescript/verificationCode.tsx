@@ -12,7 +12,7 @@ interface VerificationCodeProps {
     onResult?: (ret: object) => void;
 }
 export class VerificationCode extends React.Component<VerificationCodeProps, any> {
-    _btnShow: boolean = this.props.btnShow ? this.props.btnShow : true;
+    _btnShow: boolean = (typeof this.props.btnShow !== "undefined" && this.props.btnShow !== null) ? this.props.btnShow : true;
     _width: number = this.props.width ? this.props.width : 200;
     _height: number = this.props.height ? this.props.height : 50;
     _round: number = this.props.round ? this.props.round : 15;
