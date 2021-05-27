@@ -134,6 +134,9 @@ export class VerificationCode extends React.Component<VerificationCodeProps, any
             resMsg = {code: 416, msg: '请求范围不符合要求'};
         }
         this.props.onResult && this.props.onResult(resMsg);
+        setTimeout(() => {
+            this.initCanvas();
+        }, 800);
     }
     render() {
         return <div id="canvas" style={{"width": 500}}>
