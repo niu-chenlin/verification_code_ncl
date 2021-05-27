@@ -146,6 +146,7 @@ var VerificationCode = /** @class */ (function (_super) {
         }
     };
     VerificationCode.prototype.retMsg = function (areStr, inputStr) {
+        var _this = this;
         var resMsg = { code: 200, msg: '验证成功' };
         if (inputStr.length < areStr.length) {
             resMsg = { code: 417, msg: '未满足期望值' };
@@ -154,6 +155,9 @@ var VerificationCode = /** @class */ (function (_super) {
             resMsg = { code: 416, msg: '请求范围不符合要求' };
         }
         this.props.onResult && this.props.onResult(resMsg);
+        setTimeout(function () {
+            _this.initCanvas();
+        }, 800);
     };
     VerificationCode.prototype.render = function () {
         var _this = this;
