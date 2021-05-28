@@ -6,6 +6,8 @@ interface VerificationCodeProps {
     round?: number;
     fontSize?: number;
     strData?: string[];
+    className?: string;
+    style?: any;
     onResCanvasColor?: () => any;
     onResult?: (ret: object) => void;
 }
@@ -19,8 +21,10 @@ export declare class VerificationCode extends React.Component<VerificationCodePr
     _strArr: any[];
     _ctx: CanvasRenderingContext2D;
     _inputStr: string;
+    _timeId: any;
     constructor(props: VerificationCodeProps);
     componentDidMount(): void;
+    componentWillUnmount(): void;
     initCanvas(): void;
     randomSENumber(min: number, max: number): number;
     randomRgbaColor(): string;
