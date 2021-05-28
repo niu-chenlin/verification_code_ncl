@@ -51,6 +51,7 @@ var VerificationCode = /** @class */ (function (_super) {
         // @ts-ignore
         _this._ctx = null;
         _this._inputStr = "";
+        _this._timeId = null;
         _this.state = {
             value: ""
         };
@@ -58,6 +59,9 @@ var VerificationCode = /** @class */ (function (_super) {
     }
     VerificationCode.prototype.componentDidMount = function () {
         this.initCanvas();
+    };
+    VerificationCode.prototype.componentWillUnmount = function () {
+        clearTimeout(this._timeId);
     };
     VerificationCode.prototype.initCanvas = function () {
         var canvas = document.getElementById("myCanvas");
@@ -147,6 +151,7 @@ var VerificationCode = /** @class */ (function (_super) {
     };
     VerificationCode.prototype.retMsg = function (areStr, inputStr) {
         var _this = this;
+        var awaitTime = 800;
         var resMsg = { code: 200, msg: '验证成功' };
         if (inputStr.length < areStr.length) {
             resMsg = { code: 417, msg: '未满足期望值' };
@@ -155,13 +160,18 @@ var VerificationCode = /** @class */ (function (_super) {
             resMsg = { code: 416, msg: '请求范围不符合要求' };
         }
         this.props.onResult && this.props.onResult(resMsg);
-        setTimeout(function () {
+        if (resMsg.code === 200)
+            awaitTime = 60 * 1000;
+        this._timeId = setTimeout(function () {
             _this.initCanvas();
-        }, 800);
+        }, awaitTime);
     };
     VerificationCode.prototype.render = function () {
         var _this = this;
-        return React.createElement("div", { id: "canvas", style: { "width": 500 } },
+        var style = this.props.style;
+        if (style && !style['width'])
+            style['width'] = 500;
+        return React.createElement("div", { id: "canvas", style: style, className: this.props.className },
             React.createElement("canvas", { id: "myCanvas", width: this._width, height: this._height, onClick: function () { _this.initCanvas(); } }),
             React.createElement("input", { id: "v_input", value: this.state.value, type: "text", placeholder: "\u9A8C\u8BC1\u7801", style: { height: this._height - 5 }, onChange: function (e) { _this.doValidation(e, 'i'); } }),
             this._btnShow ?

@@ -8,6 +8,8 @@ interface VerificationCodeProps {
     round?: number;
     fontSize?: number;
     strData?: string[];
+    className?: string;
+    style?: any;
     onResCanvasColor?: () => any;
     onResult?: (ret: object) => void;
 }
@@ -23,6 +25,7 @@ export class VerificationCode extends React.Component<VerificationCodeProps, any
     // @ts-ignore
     _ctx: CanvasRenderingContext2D = null;
     _inputStr: string = "";
+    _timeId: any = null;
     constructor(props: VerificationCodeProps) {
         super(props);
         this.state = {
@@ -31,6 +34,9 @@ export class VerificationCode extends React.Component<VerificationCodeProps, any
     }
     componentDidMount() {
         this.initCanvas();
+    }
+    componentWillUnmount(){
+        clearTimeout(this._timeId);
     }
 
     initCanvas() {
@@ -127,6 +133,7 @@ export class VerificationCode extends React.Component<VerificationCodeProps, any
     }
 
     retMsg(areStr: string, inputStr: string) {
+        let awaitTime = 800;
         let resMsg = {code: 200, msg: '验证成功'};
         if(inputStr.length < areStr.length) {
             resMsg = {code: 417, msg: '未满足期望值'};
@@ -134,12 +141,15 @@ export class VerificationCode extends React.Component<VerificationCodeProps, any
             resMsg = {code: 416, msg: '请求范围不符合要求'};
         }
         this.props.onResult && this.props.onResult(resMsg);
-        setTimeout(() => {
+        if(resMsg.code === 200) awaitTime = 60*1000;
+        this._timeId = setTimeout(() => {
             this.initCanvas();
-        }, 800);
+        }, awaitTime);
     }
     render() {
-        return <div id="canvas" style={{"width": 500}}>
+        let {style} = this.props;
+        if(style && !style['width']) style['width'] = 500;
+        return <div id="canvas" style={style} className={this.props.className}>
             <canvas id="myCanvas" width={this._width} height={this._height} onClick={() => {this.initCanvas()}}/>
             <input id="v_input" value={this.state.value} type="text" placeholder="验证码" style={{height: this._height-5}} onChange={(e) => {this.doValidation(e, 'i')}}/>
             {this._btnShow ?
