@@ -141,7 +141,7 @@ export class VerificationCode extends React.Component<VerificationCodeProps, any
             resMsg = {code: 416, msg: '请求范围不符合要求'};
         }
         this.props.onResult && this.props.onResult(resMsg);
-        if(resMsg.code === 200) awaitTime = 60*1000;
+        resMsg.code === 200 && (awaitTime = 60*1000);
         this._timeId = setTimeout(() => {
             this.initCanvas();
         }, awaitTime);
